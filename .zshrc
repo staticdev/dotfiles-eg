@@ -34,10 +34,12 @@ alias la='ls -A'
 alias l='ls -CF'
 alias fuck='thefuck'
 alias k='kubectl'
+alias tm='tmux'
 
 # Use modern completion system
 autoload -Uz compinit
 compinit
+source <(kubectl completion zsh)
 
 # Git upstream branch syncer.
 # Usage: gsync main (checks out main, pull upstream, push origin).
