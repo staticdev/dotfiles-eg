@@ -29,12 +29,17 @@ alias gpp='gitp pull --rebase'
 alias gpcam='gitp commit -am'
 
 # some more ls aliases
+alias c='codium'
+alias code='codium'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias fuck='thefuck'
 alias k='kubectl'
 alias tm='tmux'
+
+# thefuck script
+eval $(thefuck --alias)
+eval $(thefuck --alias FUCK)
 
 # Use modern completion system
 autoload -Uz compinit
