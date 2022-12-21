@@ -1,9 +1,24 @@
 # Set up the prompt
-autoload -Uz promptinit
+autoload -Uz promptinit vcs_info
+precmd() {
+    vcs_info
+    if [[ -n ${vcs_info_msg_0_} ]]; then
+        # vcs_info found something (the documentation got that backwards
+        # STATUS line taken from https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/git.zsh
+        STATUS=$(command git status --porcelain 2> /dev/null | tail -n1)
+        if [[ -n $STATUS ]]; then
+            PROMPT='%F{green}%n%F{orange}@%F{yellow}%m:%F{6}%3~%f %F{red}${vcs_info_msg_0_} %f%# '
+        else
+            PROMPT='%F{green}%n%F{orange}@%F{yellow}%m:%F{6}%3~%f %F{green}${vcs_info_msg_0_} %f%# '
+        fi
+    else
+        # nothing from vcs_info
+        PROMPT='%F{green}%n%F{orange}@%F{yellow}%m:%F{6}%3~%f %# '
+    fi
+}
 promptinit
-prompt adam1
-
-setopt histignorealldups sharehistory
+zstyle ':vcs_info:git:*' formats '> %b'
+setopt histignorealldups sharehistory prompt_subst
 
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
@@ -29,13 +44,13 @@ alias gpp='gitp pull --rebase'
 alias gpcam='gitp commit -am'
 
 # some more ls aliases
-alias c='codium'
-alias code='codium'
+alias c='code'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias k='kubectl'
 alias tm='tmux'
+
 
 # thefuck script
 eval $(thefuck --alias)
