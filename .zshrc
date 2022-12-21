@@ -43,6 +43,15 @@ alias gpc='gitp commit'
 alias gpp='gitp pull --rebase'
 alias gpcam='gitp commit -am'
 
+# cd aliases
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
+
 # some more ls aliases
 alias c='code'
 alias ll='ls -alF'
