@@ -46,10 +46,10 @@ alias gpcam='gitp commit -am'
 # cd aliases
 alias cd..='cd ..'
 alias ..='cd ..'
-alias ...='cd ../../../'
-alias ....='cd ../../../../'
-alias .....='cd ../../../../'
-alias .4='cd ../../../../'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 # some more ls aliases
